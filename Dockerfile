@@ -1,5 +1,15 @@
 # Usa imagen oficial con tus versiones exactas
-FROM hexpm/elixir:1.14.5-erlang-25.3-debian-bullseye-20230601
+FROM debian:bullseye-20240205
+
+# Instala Erlang/Elixir manualmente
+RUN apt-get update && \
+    apt-get install -y curl gnupg && \
+    curl -fsSL https://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc | gpg --dearmor -o /usr/share/keyrings/erlang.gpg && \
+    echo "deb [signed-by=/usr/share/keyrings/erlang.gpg] https://packages.erlang-solutions.com/ubuntu bullseye contrib" > /etc/apt/sources.list.d/erlang.list && \
+    apt-get update && \
+    apt-get install -y esl-erlang=1:25.3-1 elixir=1.14.5-1 && \
+    mix local.hex --force && \
+    mix local.rebar --force
 
 WORKDIR /app
 
