@@ -5,7 +5,7 @@
     url: [host: System.get_env("PHX_HOST") || "challenge-prenuer.gigalixirapp.com", port: 4000],
     http: [
       ip: {0, 0, 0, 0},  # ¡Añade esta línea!
-      port: 4000,
+      port: String.to_integer(System.get_env("PORT") || "4000"),
       transport_options: [socket_opts: [:inet6]]
     ],
     cache_static_manifest: "priv/static/cache_manifest.json",
