@@ -8,6 +8,8 @@ import Config
 config :project_social_networks, ProjectSocialNetworksWeb.Endpoint,
   cache_static_manifest: "priv/static/cache_manifest.json"
 
+config :project_social_networks, :skip_db, true
+
 # Configures Swoosh API Client
 config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: ProjectSocialNetworks.Finch
 

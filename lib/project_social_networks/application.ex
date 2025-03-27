@@ -9,8 +9,6 @@ defmodule ProjectSocialNetworks.Application do
   def start(_type, _args) do
     children = [
       ProjectSocialNetworksWeb.Telemetry,
-      # ProjectSocialNetworks.Repo,
-      {DNSCluster, query: Application.get_env(:project_social_networks, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: ProjectSocialNetworks.PubSub},
       # Start the Finch HTTP client for sending emails
       {Finch, name: ProjectSocialNetworks.Finch},
