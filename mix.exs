@@ -28,9 +28,7 @@ defmodule ProjectSocialNetworks.MixProject do
     [
       {:phoenix, "~> 1.7.20"},
       # {:phoenix_ecto, "~> 4.5"},
-      # {:ecto_sql, "~> 3.10"},
       {:mint, "~> 1.5", override: true},
-      # {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 4.1"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:phoenix_live_view, "~> 0.20.14"},
