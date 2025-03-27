@@ -73,7 +73,8 @@ RUN apt-get install -y --no-install-recommends build-essential git
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set the locale
-
+ENV LANG=C.UTF-8 \
+    LC_ALL=C.UTF-8
 
 WORKDIR "/app"
 RUN chown nobody /app
