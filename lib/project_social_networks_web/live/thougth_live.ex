@@ -41,14 +41,14 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
   def mount(_params, _session, socket) do
     # Carga inicial desde localStorage (si existe)
     if connected?(socket) do
-      send(self(), :load_initial_threads)
+      send(self(), :load_from_localstorage)
     end
 
     {:ok, assign(socket,
       mostrar_modal: false,
       pensamientos: @mock_pensamientos,
-      nuevo_pensamiento: "",
-      liked_thoughts: %{}
+      nuevo_pensamiento: ""
+
     )}
   end
   def render(assigns) do
@@ -134,12 +134,12 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
         </button>
 
         <!-- Lista de pensamientos -->
-        <div id="threads-container" phx-hook="ThreadPersister" class="overflow-y-scroll space-y-4 border  p-5 h-full bg-white h-screen">
+          <div id="threads-container" phx-hook="ThreadPersister"  class="overflow-y-scroll space-y-4 border  p-5 h-full bg-white h-screen">
             <div>
               <h1 class="text-2xl font-bold px-2 py-6   hover:underline  ">What is happening in Preneur World?</h1>
             </div>
           <%= for pensamiento <- @pensamientos do %>
-            <div class="bg-white p-4 border-2 shadow rounded-xl shadow-white">
+            <div id={"thread-#{pensamiento.id}"}  class="thread-item bg-white p-4 border-2 shadow rounded-xl shadow-white">
               <div class="flex items-start space-x-4 ">
                 <img
                   src={pensamiento.usuario.avatar}
@@ -203,11 +203,12 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
                 <textarea
                   name="pensamiento"
                   phx-change="actualizar_texto"
+                  value={@nuevo_pensamiento}
                   class="flex-1 border-1 rounded-lg border-gray-300 focus:ring-0 text-gray-800 placeholder-gray-400 resize-none"
                   rows="3"
                   placeholder="What are you thinking?"
                   autofocus
-                ><%= @nuevo_pensamiento %></textarea>
+                ></textarea>
               </div>
 
               <div class="mt-4 flex justify-end space-x-3">
@@ -256,22 +257,36 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
     {:noreply, assign(socket, pensamientos: threads)}
   end
 
-  def handle_event("agregar_pensamiento", %{"pensamiento" => texto}, socket) do
-    nuevo_pensamiento = %{
-      id: System.unique_integer([:positive]),
-      usuario: %{nombre: "Tú", avatar: "https://i.ibb.co/XrNtwJ1P/Whats-App-Image-2025-01-08-at-7-39-33-PM.jpg"},
-      contenido: texto,
-      fecha: "Ahora",
-      hora: "Ahora"
-    }
-
-    updated_threads = [nuevo_pensamiento | socket.assigns.pensamientos]
-
-    {:noreply,
-     socket
-     |> assign(pensamientos: updated_threads, nuevo_pensamiento: "", mostrar_modal: false)
-     |> push_event("persist_threads", %{threads: updated_threads})
-
-    }
+  def handle_event("restore_threads", %{"threads" => threads}, socket) do
+    {:noreply, assign(socket, pensamientos: threads)}
   end
+
+  def handle_event("agregar_pensamiento", %{"pensamiento" => texto}, socket) do
+    # Validación básica (opcional)
+    if String.trim(texto) == "" do
+      {:noreply, socket}
+    else
+      nuevo_pensamiento = %{
+        id: System.unique_integer([:positive]),
+        usuario: %{nombre: "Tú", avatar: "https://i.ibb.co/..."},
+        contenido: texto,
+        fecha: "Ahora",
+        hora: "Ahora"
+      }
+
+      updated_threads = [nuevo_pensamiento | socket.assigns.pensamientos]
+
+      {:noreply,
+       socket
+       |> assign(
+          pensamientos: updated_threads,
+          nuevo_pensamiento: "",
+          mostrar_modal: false,
+          updated_at: System.unique_integer([:positive])  # Fuerza re-render
+       )
+       |> push_event("persist_threads", %{threads: updated_threads})
+      }
+    end
+  end
+
 end

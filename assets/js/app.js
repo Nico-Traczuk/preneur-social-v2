@@ -7,21 +7,21 @@ import {LiveSocket} from "phoenix_live_view"
 const Hooks = {
   ThreadPersister: {
     mounted() {
-      console.log("Hook mounted, loading threads...");
+      // Cargar datos iniciales
       const savedThreads = localStorage.getItem("saved_threads");
       if (savedThreads) {
-        console.log("Found saved threads:", savedThreads);
-        this.pushEvent("load_saved_threads", { threads: JSON.parse(savedThreads) });
+        this.pushEvent("load_threads", { threads: JSON.parse(savedThreads) });
       }
 
+      // Escuchar eventos para guardar
       this.handleEvent("persist_threads", ({ threads }) => {
-        console.log("Persisting threads:", threads);
         localStorage.setItem("saved_threads", JSON.stringify(threads));
       });
     }
   }
 };
-
+const initialThreads = localStorage.getItem("saved_threads") || "[]";
+document.getElementById("threads-container").dataset.initialThreads = initialThreads;
 
 
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
