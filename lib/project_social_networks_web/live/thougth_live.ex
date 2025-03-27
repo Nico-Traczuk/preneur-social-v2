@@ -152,15 +152,7 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
                     <span class="text-gray-500 text-sm">· <%= pensamiento.fecha %> a las <%= pensamiento.hora %></span>
                   </div>
                   <p class="mt-1 text-gray-800"><%= pensamiento.contenido %></p>
-                  <%= if pensamiento[:imagen] do %>
-                    <div class="mt-3 rounded-lg overflow-hidden">
-                      <img
-                        src={pensamiento.imagen}
-                        class="w-full h-auto max-h-96 object-cover rounded-lg"
-                        alt="Imagen adjunta"
-                      />
-                    </div>
-                  <% end %>
+
                   <div class="mt-3 flex space-x-4 text-gray-500 text-sm">
                     <button class="flex items-center space-x-1 hover:text-white hover:bg-blue-400 rounded-full p-2">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
