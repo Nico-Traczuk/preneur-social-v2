@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <title>Prenuer Social </title>
+    <.live_title suffix=" · Phoenix Framework">Red Social</.live_title>
+    <link rel="stylesheet" href={~p"/assets/app.css"}/>
+    
+  </head>
+  <body class="bg-gray-50 m-0 ">
+    <main role="main" class="container ">
+      <%= @inner_content %>
+    </main>
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}></script>
+  </body>
+</html>
