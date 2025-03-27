@@ -1,26 +1,45 @@
-# Usa una imagen oficial de Elixir con todo preinstalado
-FROM hexpm/elixir:1.15.7-erlang-26.1-debian-bookworm-20240205
+# Usa imagen oficial con tus versiones exactas
+FROM hexpm/elixir:1.14.5-erlang-25.3-debian-bullseye-20230601
 
 WORKDIR /app
 
-# Instala solo lo absolutamente esencial
-RUN apt-get update -qq && \
-    apt-get install -y --no-install-recommends git ca-certificates && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-
-# Configuración UTF-8 (sin locales complejos)
+# Configuración UTF-8 (soluciona warning de locales)
 ENV LANG=C.UTF-8 \
-    LC_ALL=C.UTF-8
+    LC_ALL=C.UTF-8 \
+    # Evita checks de DB si no la usas
+    DATABASE_URL="" \
+    # Configuración para Phoenix
+    PHX_SERVER=true
 
-# Copia solo lo necesario
-COPY mix.exs mix.lock ./
+# Instalación mínima de dependencias (sin build-essential)
+RUN apt-get update -qq && \
+    apt-get install -y --no-install-recommends \
+    git \
+    ca-certificates \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Configura Hex y Rebar
 RUN mix local.hex --force && \
-    mix local.rebar --force && \
-    mix deps.get
+    mix local.rebar --force
 
-COPY . .
+# Copia archivos de dependencias primero (optimiza caché)
+COPY mix.exs mix.lock ./
+RUN mix deps.get --only prod
 
-# Compilación final
+# Copia el resto de la aplicación
+COPY assets assets
+COPY priv priv
+COPY lib lib
+COPY config config
+
+# Compilación y assets
 RUN mix compile && \
-    mix assets.deploy
+    mix assets.deploy && \
+    mix phx.digest
+
+# Puerto expuesto (para Render)
+EXPOSE 4000
+
+# Comando de inicio (para producción)
+CMD ["mix", "phx.server"]
