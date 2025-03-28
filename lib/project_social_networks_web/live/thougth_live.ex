@@ -134,7 +134,7 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
         </button>
 
         <!-- Lista de pensamientos -->
-          <div id="threads-container" phx-hook="ThreadPersister"  class="overflow-y-scroll space-y-4 border  p-5 h-full bg-white h-screen">
+          <div id="threads-container" phx-hook="ThreadPersister"  class="overflow-y-scroll space-y-4  p-5 h-full bg-white h-screen">
             <div>
               <h1 class="text-2xl font-bold px-2 py-6   hover:underline  ">What is happening in Preneur World?</h1>
             </div>
