@@ -47,10 +47,6 @@ RUN if [ -f "assets/package.json" ]; then \
       mix phx.digest; \
     fi
 
-RUN cd assets && \
-  npm run deploy && \
-  cd .. && \
-  mix phx.digest
 
 
 # Compilación final
