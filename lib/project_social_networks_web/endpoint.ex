@@ -22,7 +22,7 @@ defmodule ProjectSocialNetworksWeb.Endpoint do
   plug Plug.Static,
     at: "/",
     from: :project_social_networks,
-    gzip: false,
+    gzip: true,
     only: ProjectSocialNetworksWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the
