@@ -139,7 +139,7 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
               <h1 class="text-2xl font-bold px-2 py-2   hover:underline  ">What is happening in Preneur World?</h1>
             </div>
             <div>
-            <form phx-submit="agregar_pensamiento" class="p-4 border-b-2" >
+            <form phx-submit="agregar_pensamiento" class="p-4 border-b-2 border-gray-200" >
               <div class="flex space-x-3">
                 <img
                   src="https://i.ibb.co/XrNtwJ1P/Whats-App-Image-2025-01-08-at-7-39-33-PM.jpg"
