@@ -36,6 +36,11 @@ COPY priv priv
 COPY lib lib
 COPY config config
 
+COPY assets/package.json assets/package-lock.json ./assets/
+RUN cd assets && \
+    npm install && \
+    cd ..
+
 # Construcción condicional de assets
 RUN if [ -f "assets/package.json" ]; then \
       cd assets && \
@@ -44,6 +49,12 @@ RUN if [ -f "assets/package.json" ]; then \
       cd .. && \
       mix phx.digest; \
     fi
+
+RUN cd assets && \
+  npm run deploy && \
+  cd .. && \
+  mix phx.digest
+
 
 # Compilación final
 RUN mix compile
