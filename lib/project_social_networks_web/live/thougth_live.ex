@@ -65,10 +65,10 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
       </div>
 
       <!-- Menú -->
-      <ul class="space-y-5 ">
+      <ul class="space-y-5  ">
         <!-- Inicio -->
         <li>
-          <a href="#" class="flex items-center p-3 rounded-xl text-gray-200 hover:bg-white hover:text-black">
+          <a href="#" class=" transform transition duration-300 ease-in-out flex items-center p-3 rounded-xl text-gray-200 hover:bg-white hover:text-black">
             <!-- Ícono - Tamaño fijo -->
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <!-- Aumenté a h-8 w-8 -->
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
@@ -80,7 +80,7 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
 
         <!-- Explorar -->
         <li>
-          <a href="#" class="flex items-center p-3 rounded-xl text-gray-200 hover:bg-white hover:text-black">
+          <a href="#" class="transform transition duration-300 ease-in-out flex items-center p-3 rounded-xl text-gray-200 hover:bg-white hover:text-black">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
@@ -90,7 +90,7 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
 
         <!-- Notificaciones -->
         <li>
-          <a href="#" class="flex items-center p-3 rounded-xl text-gray-200 hover:bg-white hover:text-black">
+          <a href="#" class="transform transition duration-300 ease-in-out flex items-center p-3 rounded-xl text-gray-200 hover:bg-white hover:text-black">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
             </svg>
@@ -100,7 +100,7 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
 
         <!-- Mensajes -->
         <li>
-          <a href="#" class="flex items-center p-3 rounded-xl text-gray-200 hover:bg-white hover:text-black">
+          <a href="#" class="transform transition duration-300 ease-in-out flex items-center p-3 rounded-xl text-gray-200 hover:bg-white hover:text-black">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
             </svg>
@@ -126,7 +126,7 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
         <!-- Botón para abrir modal -->
         <button id="abrir-modal"
           phx-click="mostrar_modal"
-          class="fixed bottom-8 right-8 bg-red-300 hover:bg-red-400 text-white rounded-full p-4 shadow-lg"
+          class="transform transition duration-300 ease-in-out fixed bottom-8 right-8 bg-red-300 hover:bg-red-400 text-white rounded-full p-4 shadow-lg"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
@@ -162,13 +162,13 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
                     </div>
                   <% end %>
                   <div class="mt-3 flex space-x-4 text-gray-500 text-sm">
-                    <button class="flex items-center space-x-1 hover:text-white hover:bg-blue-400 rounded-full p-2">
+                    <button class="transform transition duration-300 ease-in-out flex items-center space-x-1 hover:text-white hover:bg-blue-400 rounded-full p-2">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                       </svg>
                       <span>Like</span>
                     </button>
-                    <button class="flex items-center space-x-1 hover:text-white hover:bg-green-400 rounded-full p-2">
+                    <button class="transform transition duration-300 ease-in-out flex items-center space-x-1 hover:text-white hover:bg-green-400 rounded-full p-2">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                       </svg>
