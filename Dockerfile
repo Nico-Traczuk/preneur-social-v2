@@ -36,10 +36,7 @@ COPY priv priv
 COPY lib lib
 COPY config config
 
-COPY assets/package.json assets/package-lock.json ./assets/
-RUN cd assets && \
-    npm install && \
-    cd ..
+
 
 # Construcción condicional de assets
 RUN if [ -f "assets/package.json" ]; then \
