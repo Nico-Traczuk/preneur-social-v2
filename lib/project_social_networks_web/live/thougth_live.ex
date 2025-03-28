@@ -139,7 +139,7 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
               <h1 class="text-2xl font-bold px-2 py-6   hover:underline  ">What is happening in Preneur World?</h1>
             </div>
           <%= for pensamiento <- @pensamientos do %>
-            <div id={"thread-#{pensamiento.id}"}  class="thread-item bg-white p-4 border-2 shadow rounded-xl shadow-white">
+            <div id={"thread-#{pensamiento.id}"}  class="thread-item bg-white p-4 border-2 border-gray-200 shadow rounded-xl shadow-white">
               <div class="flex items-start space-x-4 ">
                 <img
                   src={pensamiento.usuario.avatar}
