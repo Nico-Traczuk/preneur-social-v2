@@ -35,7 +35,7 @@ COPY assets assets
 COPY priv priv
 COPY lib lib
 COPY config config
-
+COPY priv/static /app/priv/static
 
 
 # Construcción condicional de assets
