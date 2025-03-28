@@ -134,7 +134,7 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
         </button>
 
         <!-- Lista de pensamientos -->
-          <div id="threads-container" phx-hook="ThreadPersister"  class="overflow-y-scroll space-y-4  p-5 h-full bg-white h-screen">
+          <div id="threads-container" phx-hook="ThreadPersister"  class="overflow-y-scroll space-y-4  p-5 h-full bg-gray-50 h-screen">
             <div>
               <h1 class="text-2xl font-bold px-2 py-6   hover:underline  ">What is happening in Preneur World?</h1>
             </div>
@@ -185,7 +185,7 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
 
 
       <%= if @mostrar_modal do %>
-        <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
+        <div id="send-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
             phx-window-keydown="cerrar_modal"
             phx-key="escape">
 
