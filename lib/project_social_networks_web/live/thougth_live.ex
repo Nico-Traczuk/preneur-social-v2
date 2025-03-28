@@ -180,11 +180,7 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
             </div>
           <% end %>
         </div>
-      </div>
-
-
-
-      <%= if @mostrar_modal do %>
+        <%= if @mostrar_modal do %>
         <div id="send-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
             phx-window-keydown="cerrar_modal"
             phx-key="escape">
@@ -233,6 +229,11 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
         </div>
       <% end %>
     </div>
+      </div>
+
+
+
+
     """
   end
 
