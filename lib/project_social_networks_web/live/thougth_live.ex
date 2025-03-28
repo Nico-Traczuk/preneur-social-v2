@@ -136,8 +136,40 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
         <!-- Lista de pensamientos -->
           <div id="threads-container" phx-hook="ThreadPersister"  class="overflow-y-scroll space-y-4  p-5 h-full bg-gray-50 h-screen">
             <div>
-              <h1 class="text-2xl font-bold px-2 py-6   hover:underline  ">What is happening in Preneur World?</h1>
+              <h1 class="text-2xl font-bold px-2 py-2   hover:underline  ">What is happening in Preneur World?</h1>
             </div>
+            <div>
+            <form phx-submit="agregar_pensamiento" class="p-4 border-b-2" >
+              <div class="flex space-x-3">
+                <img
+                  src="https://i.ibb.co/XrNtwJ1P/Whats-App-Image-2025-01-08-at-7-39-33-PM.jpg"
+                  alt="Tu avatar"
+                  class="h-16 w-16 rounded-full object-cover"
+                />
+                <textarea
+                  name="pensamiento"
+                  phx-change="actualizar_texto"
+                  value={@nuevo_pensamiento}
+                  class="flex-1 border-1 rounded-lg border-gray-300 focus:ring-0 text-gray-800 placeholder-gray-400 resize-none"
+                  rows="3"
+                  placeholder="What are you thinking?"
+                  autofocus
+                ></textarea>
+              </div>
+
+              <div class="mt-2 flex justify-end space-x-3">
+
+                <button
+                  type="submit"
+                  class="px-4 py-2 rounded-full bg-red-400 text-white hover:bg-red-600 disabled:opacity-50"
+                  disabled={@nuevo_pensamiento == ""}
+                >
+                  Send
+                </button>
+              </div>
+            </form>
+            </div>
+
           <%= for pensamiento <- @pensamientos do %>
             <div id={"thread-#{pensamiento.id}"}  class="thread-item bg-white p-4 border-2 border-gray-200 shadow rounded-xl shadow-white">
               <div class="flex items-start space-x-4 ">
