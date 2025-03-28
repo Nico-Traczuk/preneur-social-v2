@@ -7,7 +7,7 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
       id: 1,
       usuario: %{nombre: "Juan Roman Riquelme", avatar: "https://tn.com.ar/resizer/NHBFFiOPddpYnb6QrPdPty5wcaI=/arc-anglerfish-arc2-prod-artear/public/QLNSCUL7PZIBGS27B4XQPOQ4EU.jpg"},
       contenido: "Seremos menos malos que los demas ",
-      imagen: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.diariodemocracia.com%2Fmas-deportivo%2Ffutbol%2F37498-riquelme-somos-mejor-equipo-pais%2F&psig=AOvVaw0P-cDwEuAv5GARo-Wm1p5g&ust=1743183941705000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCJiZza_oqowDFQAAAAAdAAAAABAE",
+      imagen: "https://media.tycsports.com/files/2023/11/03/641148/riquelme_1440x810_wmk.webp?v=2",
       hora: "10:30 AM",
       fecha: "Hoy"
     },
@@ -155,7 +155,7 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
                   <%= if pensamiento[:imagen] do %>
                     <div class="mt-3 rounded-lg overflow-hidden">
                       <img
-                        src={pensamiento.imagen}
+                        src={pensamiento[:imagen]}
                         class="w-full h-auto max-h-96 object-cover rounded-lg"
                         alt="Imagen adjunta"
                       />
