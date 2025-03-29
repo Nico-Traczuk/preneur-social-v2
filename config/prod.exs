@@ -8,11 +8,16 @@ import Config
 config :project_social_networks, ProjectSocialNetworksWeb.Endpoint,
   check_origin: [
     "https://preneur-social-v3.onrender.com",
-    "//preneur-social-v3.onrender.com"  # Alternativa sin esquema
+    "//preneur-social-v3.onrender.com",  # Alternativa sin esquema
+    "http://localhost:4000"
   ],
   live_view: [
     signing_salt: System.get_env("LIVE_VIEW_SALT"),
-    allowed_origins: ["https://preneur-social-v3.onrender.com"]
+    allowed_origins: [
+      "https://preneur-social-v3.onrender.com",
+      "http://localhost:4000"
+    ],
+    debug: true
   ],
   cache_static_manifest: "priv/static/cache_manifest.json"
 

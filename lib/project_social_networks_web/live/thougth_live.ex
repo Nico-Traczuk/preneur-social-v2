@@ -38,19 +38,21 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
   #   )}
   # end
 
-  def mount(_params, _session, socket) do
-    # Carga inicial desde localStorage (si existe)
-    if connected?(socket) do
-      send(self(), :load_from_localstorage)
-    end
 
+
+  def mount(_params, _session, socket) do
     {:ok, assign(socket,
       mostrar_modal: false,
       pensamientos: @mock_pensamientos,
       nuevo_pensamiento: ""
-
     )}
   end
+
+
+
+
+
+
   def render(assigns) do
     ~H"""
     <div class="h-screen w-full  absolute">
@@ -136,7 +138,7 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
         <!-- Lista de pensamientos -->
           <div id="threads-container" phx-hook="ThreadPersister"  class=" space-y-4  p-5 h-full bg-gray-50 h-screen">
             <div>
-              <h1 class="text-2xl font-bold px-2 py-2 text-center md:text-left  hover:underline  ">What is happening in Preneur World?</h1>
+              <h1 class="text-2xl font-bold px-2 py-2 text-center md:text-left  ">What is happening in Preneur World?</h1>
             </div>
             <div>
             <form phx-submit="agregar_pensamiento" class="p-4 border-b-2 border-gray-200" >
@@ -322,6 +324,30 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
        )
        |> push_event("persist_threads", %{threads: updated_threads})
       }
+    end
+  end
+  defp get_pensamientos_from_localstorage do
+    case get_item("pensamientos") do
+      nil -> []
+      pensamientos -> Jason.decode!(pensamientos)
+    end
+  end
+
+  defp get_item(key) do
+    case :persistent_term.get({__MODULE__, key}) do
+      nil ->
+        case :persistent_term.get({__MODULE__, :localStorage}) do
+          nil ->
+            localStorage = %{pensamientos: []}
+            :persistent_term.put({__MODULE__, :localStorage}, localStorage)
+            Map.get(localStorage, key)
+
+          localStorage ->
+            Map.get(localStorage, key)
+        end
+
+      value ->
+        value
     end
   end
 
