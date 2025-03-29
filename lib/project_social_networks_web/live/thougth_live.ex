@@ -55,7 +55,7 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
     ~H"""
     <div class="h-screen w-full  absolute">
 
-    <div class="fixed top-0 left-0 w-20 hover:w-64 bg-black h-screen p-4 transition-all duration-300 ease-in-out overflow-hidden group border-r-2">
+    <div class="sidebar  top-0 left-0 w-20 hover:w-64 bg-black h-screen p-4 transition-all duration-300 ease-in-out overflow-hidden group border-r-2 overflow-y-scroll">
       <!-- Logo - Mantiene tamaño grande -->
       <div class="bg-black rounded-xl px-2 py-4 mb-2 ">
         <img
@@ -134,9 +134,9 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
         </button>
 
         <!-- Lista de pensamientos -->
-          <div id="threads-container" phx-hook="ThreadPersister"  class="overflow-y-scroll space-y-4  p-5 h-full bg-gray-50 h-screen">
+          <div id="threads-container" phx-hook="ThreadPersister"  class=" space-y-4  p-5 h-full bg-gray-50 h-screen">
             <div>
-              <h1 class="text-2xl font-bold px-2 py-2   hover:underline  ">What is happening in Preneur World?</h1>
+              <h1 class="text-2xl font-bold px-2 py-2 text-center md:text-left  hover:underline  ">What is happening in Preneur World?</h1>
             </div>
             <div>
             <form phx-submit="agregar_pensamiento" class="p-4 border-b-2 border-gray-200" >
@@ -172,18 +172,20 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
 
           <%= for pensamiento <- @pensamientos do %>
             <div id={"thread-#{pensamiento.id}"}  class="thread-item bg-white p-4 border-2 border-gray-200 shadow rounded-xl shadow-white">
-              <div class="flex items-start space-x-4 ">
+              <div class="flex items-start space-x-4 animate__animated animate__fadeIn">
                 <img
                   src={pensamiento.usuario.avatar}
                   alt="imagen avatar"
                   class="h-16 w-16 rounded-full object-cover"
                 />
-                <div class="flex-1">
-                  <div class="flex items-center space-x-2">
-                    <span class="font-semibold text-gray-900"><%= pensamiento.usuario.nombre %></span>
-                    <span class="text-gray-500 text-sm">· <%= pensamiento.fecha %> a las <%= pensamiento.hora %></span>
+                <div class="" style="margin:0;">
+                  <div class="">
+                    <div class="flex flex-col md:flex-row md:items-center">
+                      <span class="font-semibold text-gray-900 text-base"><%= pensamiento.usuario.nombre %></span>
+                      <span class="text-gray-500 text-sm">· <%= pensamiento.fecha %> a las <%= pensamiento.hora %></span>
+                    </div>
+                    <p class="mt-1 text-gray-800"><%= pensamiento.contenido %></p>
                   </div>
-                  <p class="mt-1 text-gray-800"><%= pensamiento.contenido %></p>
                   <%= if pensamiento[:imagen] do %>
                     <div class="mt-3 rounded-lg overflow-hidden">
                       <img
@@ -217,7 +219,7 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
             phx-window-keydown="cerrar_modal"
             phx-key="escape">
 
-          <div class="bg-white rounded-lg shadow-xl w-full max-w-xl" phx-click-away="cerrar_modal">
+          <div class="bg-white rounded-lg shadow-xl w-full max-w-xl animate__animated animate__fadeInDown" phx-click-away="cerrar_modal">
             <div class="p-4 border-b">
               <h2 class="text-xl font-bold text-gray-800">What are you thinking?</h2>
             </div>

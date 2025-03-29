@@ -7,8 +7,32 @@
     <title>Prenuer Social </title>
     <.live_title suffix=" · Phoenix Framework">Red Social</.live_title>
     <link rel="stylesheet" href={~p"/assets/app.css"}/>
+
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
   </head>
+  <style>
+    .sidebar {
+        display: none;
+        
+    }
+    .sidebar img {
+      display: none;
+    }
+
+    @media (min-width: 1024px) {
+      .sidebar {
+        display: block;
+        position: fixed;
+      }
+      .sidebar img {
+        display: block;
+      }
+    }
+  </style>
   <body class="bg-gray-50 m-0 ">
     <main role="main" class="container ">
       <%= @inner_content %>
