@@ -215,7 +215,44 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
               </div>
             </div>
           <% end %>
+          <div class="fixed bottom-0 left-0 w-full bg-black  shadow-lg xl:hidden" id="menu-flotante"
+            style="transform: translateY(100%); transition: transform 0.3s ease-in-out;">
+            <div class="flex justify-around py-2">
+              <button class="flex flex-col items-center text-white hover:text-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9h18M3 12h18m-6 3h6" />
+                </svg>
+                <span class="text-xs">Menu 1</span>
+              </button>
+              <button class="flex flex-col items-center text-white hover:text-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                <span class="text-xs">Menu 2</span>
+              </button>
+              <button class="flex flex-col items-center text-white hover:text-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v16a1 1 0 01-1 1H4a1 1 0 01-1-1V4z" />
+                </svg>
+                <span class="text-xs">Menu 3</span>
+              </button>
+            </div>
+          </div>
+          <script>
+            window.addEventListener('scroll', () => {
+              const scrollPosition = window.scrollY
+              if (scrollPosition > 100) {
+                document.getElementById('menu-flotante').style.transform = 'translateY(0)'
+              } else {
+                document.getElementById('menu-flotante').style.transform = 'translateY(100%)'
+              }
+            })
+          </script>
+
         </div>
+
+
+
         <%= if @mostrar_modal do %>
         <div id="send-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50"
             phx-window-keydown="cerrar_modal"
@@ -265,7 +302,7 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
         </div>
       <% end %>
     </div>
-      </div>
+    </div>
 
 
 

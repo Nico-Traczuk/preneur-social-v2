@@ -917,6 +917,10 @@ select {
   top: 1.5rem;
 }
 
+.bottom-0 {
+  bottom: 0px;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -1228,6 +1232,10 @@ select {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
 }
 
 .gap-1 {
@@ -1595,6 +1603,11 @@ select {
   line-height: 1.75rem;
 }
 
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .font-bold {
   font-weight: 700;
 }
@@ -1940,6 +1953,11 @@ select {
   color: rgb(24 24 27 / var(--tw-text-opacity));
 }
 
+.hover\:text-blue-500:hover {
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+
 .hover\:opacity-40:hover {
   opacity: 0.4;
 }
@@ -2099,6 +2117,10 @@ select {
 }
 
 @media (min-width: 768px) {
+  .md\:hidden {
+    display: none;
+  }
+
   .md\:flex-row {
     flex-direction: row;
   }
@@ -2136,6 +2158,10 @@ select {
 @media (min-width: 1280px) {
   .xl\:left-\[50rem\] {
     left: 50rem;
+  }
+
+  .xl\:hidden {
+    display: none;
   }
 
   .xl\:px-28 {
