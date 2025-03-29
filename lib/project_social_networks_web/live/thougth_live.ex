@@ -179,21 +179,21 @@ defmodule ProjectSocialNetworksWeb.ThoughtLive do
                   class="h-16 w-16 rounded-full object-cover"
                 />
                 <div class="" style="margin:0;">
-                  <div class="">
+
                     <div class="flex flex-col md:flex-row md:items-center">
                       <span class="font-semibold text-gray-900 text-base"><%= pensamiento.usuario.nombre %></span>
                       <span class="text-gray-500 text-sm">· <%= pensamiento.fecha %> a las <%= pensamiento.hora %></span>
                     </div>
                     <p class="mt-1 text-gray-800"><%= pensamiento.contenido %></p>
-                  </div>
+
                   <%= if pensamiento[:imagen] do %>
-                    <div class="mt-3 rounded-lg overflow-hidden">
-                      <img
-                        src={pensamiento[:imagen]}
-                        class="w-full h-auto max-h-96 object-cover rounded-lg"
-                        alt="Imagen adjunta"
-                      />
-                    </div>
+                  <div class="mt-3 rounded-lg overflow-hidden">
+                    <img
+                      src={pensamiento[:imagen]}
+                      class="w-full h-auto max-h-96 object-cover rounded-lg"
+                      alt="Imagen adjunta"
+                    />
+                  </div>
                   <% end %>
                   <div class="mt-3 flex space-x-4 text-gray-500 text-sm">
                     <button class="transform transition duration-300 ease-in-out flex items-center space-x-1 hover:text-white hover:bg-blue-400 rounded-full p-2 hover:cursor-pointer">
